@@ -58,13 +58,17 @@ Y = twitter_data['target'].values
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, stratify=Y, random_state=2)
 
+from sklearn.svm import LinearSVC
+
 print("Vectorizing...")
-vectorizer = TfidfVectorizer()
+# Using bigrams and limiting features to prevent memory issues but capture more context
+vectorizer = TfidfVectorizer(ngram_range=(1, 2), max_features=500000)
 X_train = vectorizer.fit_transform(X_train)
 X_test = vectorizer.transform(X_test)
 
 print("Training model...")
-model = LogisticRegression(max_iter=1000)
+# LinearSVC typically yields higher accuracy on sparse text data than standard Logistic Regression
+model = LinearSVC(max_iter=2000, random_state=2, dual=True)
 model.fit(X_train, Y_train)
 
 X_train_prediction = model.predict(X_train)
