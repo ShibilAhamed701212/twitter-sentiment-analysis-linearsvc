@@ -10,7 +10,16 @@ This repository contains a simple machine learning pipeline for Twitter Sentimen
 
 ## Dataset
 
-By default, the script looks for `training.1600000.processed.noemoticon.csv` (Kaggle Sentiment140 dataset). If it is not found, the script gracefully falls back to the `nltk.corpus.twitter_samples` dataset to train a sample model.
+By default, the script looks for `training.1600000.processed.noemoticon.csv` (Kaggle Sentiment140 dataset). 
+
+To download the full dataset, ensure you have the Kaggle CLI installed and configured with your `kaggle.json` credentials, then run:
+```bash
+pip install kaggle
+kaggle datasets download -d kazanova/sentiment140
+unzip sentiment140.zip
+```
+
+If the dataset is not found in the root directory, the script gracefully falls back to the `nltk.corpus.twitter_samples` dataset to train a sample model.
 
 ## Training
 
