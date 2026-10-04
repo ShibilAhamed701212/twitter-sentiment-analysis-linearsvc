@@ -1,0 +1,4 @@
+line-length = 120
+# extracted_code.py is a raw export of the Colab notebook (it contains shell
+# commands such as `!kaggle ...`) and is kept for reference only.
+extend-exclude = ["extracted_code.py", "*.ipynb"]
