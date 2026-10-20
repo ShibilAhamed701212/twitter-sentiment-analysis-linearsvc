@@ -10,6 +10,7 @@ def test_stemming_strips_non_letters_and_stopwords():
 
 def test_stemming_keeps_negations():
     assert train_model.stemming("This is not good, I don't like it") == "not good don like"
+    assert train_model.stemming("I can't stand it") == "can stand"
 
 
 def test_stemming_empty_text():

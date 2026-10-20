@@ -87,8 +87,8 @@ Data shape: (10000, 2)
 Applying stemming...
 Vectorizing...
 Training model...
-Accuracy score of the training data :  0.998375
-Accuracy score of the test data :  0.7705
+Accuracy score of the training data :  0.998625
+Accuracy score of the test data :  0.767
 Saving model and vectorizer...
 Model successfully built!
 
@@ -112,7 +112,7 @@ The tests need the NLTK `stopwords` corpus, which is downloaded on first use.
 
 ## Known limitations
 
-- **Negations are kept, but the model is still bag-of-words.** Negation words (`not`, `no`, `don't`, `isn't`, ...) are excluded from stopword removal, so "not good" stays `not good` and becomes a bigram feature. On the fallback dataset this raised 5-fold cross-validated accuracy from 0.756 to 0.765. Phrases the training data rarely contains, such as "not bad", can still be misclassified. Models saved before this change used the old preprocessing and should be retrained.
+- **Negations are kept, but the model is still bag-of-words.** Negation words (`not`, `no`, `don't`, `can't`, `isn't`, ...) are excluded from stopword removal, so "not good" stays `not good` and becomes a bigram feature. On the fallback dataset this raised 5-fold cross-validated accuracy from 0.756 to 0.767. Phrases the training data rarely contains, such as "not bad", can still be misclassified. Models saved before this change used the old preprocessing and should be retrained.
 - **Only letters are kept.** Emoticons, numbers and punctuation are dropped, and URLs and @handles are split into word fragments (`http`, `co`, username parts) rather than removed.
 - **Binary labels only.** There is no neutral class.
 - **Overfitting on the small fallback dataset** is visible in the 0.998 train vs 0.77 test accuracy above.

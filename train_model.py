@@ -19,9 +19,9 @@ _stop_words = None
 
 # Negation words carry sentiment ("not good"), so they are kept even though
 # NLTK lists them as stopwords. Contractions appear here already split by the
-# letters-only cleanup ("don't" -> "don" "t").
+# letters-only cleanup ("don't" -> "don" "t", "can't" -> "can" "t").
 NEGATIONS = {
-    'no', 'nor', 'not', 'ain', 'aren', 'couldn', 'didn', 'doesn', 'don', 'hadn', 'hasn', 'haven', 'isn',
+    'no', 'nor', 'not', 'ain', 'aren', 'can', 'couldn', 'didn', 'doesn', 'don', 'hadn', 'hasn', 'haven', 'isn',
     'mightn', 'mustn', 'needn', 'shan', 'shouldn', 'wasn', 'weren', 'won', 'wouldn',
 }
 
