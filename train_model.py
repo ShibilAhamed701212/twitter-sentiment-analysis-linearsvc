@@ -17,6 +17,14 @@ VECTORIZER_PATH = 'vectorizer.sav'
 port_stem = PorterStemmer()
 _stop_words = None
 
+# Negation words carry sentiment ("not good"), so they are kept even though
+# NLTK lists them as stopwords. Contractions appear here already split by the
+# letters-only cleanup ("don't" -> "don" "t", "can't" -> "can" "t").
+NEGATIONS = {
+    'no', 'nor', 'not', 'ain', 'aren', 'can', 'couldn', 'didn', 'doesn', 'don', 'hadn', 'hasn', 'haven', 'isn',
+    'mightn', 'mustn', 'needn', 'shan', 'shouldn', 'wasn', 'weren', 'won', 'wouldn',
+}
+
 
 def ensure_nltk_resource(name):
     """Download an NLTK corpus only if it is missing, failing loudly on error."""
@@ -33,7 +41,7 @@ def get_stop_words():
     if _stop_words is None:
         ensure_nltk_resource('stopwords')
         from nltk.corpus import stopwords
-        _stop_words = set(stopwords.words('english'))
+        _stop_words = set(stopwords.words('english')) - NEGATIONS
     return _stop_words
 
 

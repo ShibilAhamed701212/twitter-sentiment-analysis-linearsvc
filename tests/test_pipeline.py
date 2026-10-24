@@ -8,6 +8,11 @@ def test_stemming_strips_non_letters_and_stopwords():
     assert train_model.stemming("I am LOVING this!!! :) http://t.co") == "love http co"
 
 
+def test_stemming_keeps_negations():
+    assert train_model.stemming("This is not good, I don't like it") == "not good don like"
+    assert train_model.stemming("I can't stand it") == "can stand"
+
+
 def test_stemming_empty_text():
     assert train_model.stemming("") == ""
 
